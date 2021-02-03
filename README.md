@@ -28,18 +28,19 @@ To install PyLo completely you need to install the PyLo core plus the files from
 do so, follow this steps:
 
 1. [Download all files](https://github.com/miile7/pylo-gms/archive/master.zip)
-2. Open the downloaded zip file and copy the files (not the `pylo-gms-master` directory
-   but the files inside) into `%programdata%\Gata\Plugins\pylo`. If the `Plugins` directory 
-   does not exist, create it. Also create the `pylo` directory. (Note that using 
-   `%programdata%\Gata\Plugins\pylo` is not necessary. PyLo will also work for other 
-   directories. It just makes sens to keep the files here.)
+2. Open the downloaded zip file and copy the `pylo-gms-master` into 
+   `%programfiles%\Gata\Plugins`. If the `Plugins` directory does not exist, create it. 
+   If you like you can rename the `pylo-gms-master` directory to `pylo`. (Note that using 
+   `%programfiles%\Gata\Plugins` is not necessary. PyLo will also work for other 
+   directories. It just makes sens to keep the files here. Plus it saves some work for 
+   you sice PyLo will find itself easily.)
 3. Execute the `install-python-env.bat`. This will prepare the python environment and 
    download the PyLo core for you (note that an internet connection is required)
 4. Now you can integrate PyLo into DigitalMicrograph by opening the `install.s` file in 
    DigitalMicrograph and executing it.
 
 If you do not have an internet connection install the PyLo core manually from the 
-[core repository](https://github.com/miile7/project-pylo/). After that do Step 1, 2 and 4
+[core repository](https://github.com/miile7/pylo-project/). After that do Step 1, 2 and 4
 
 If you Unix PyLo still does work for you. In this case please install the command line 
-version of PyLo from the [core repository](https://github.com/miile7/project-pylo/).
+version of PyLo from the [core repository](https://github.com/miile7/pylo-project/).
