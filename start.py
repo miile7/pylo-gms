@@ -88,6 +88,15 @@ try:
 	import os
 	import sys
 	import logging
+	import threading
+
+	# show threads in debug output
+	DM.SetOutputTo(2)
+	DM.ExecuteScriptString("ClearDebug();")
+	print("Starting with {} active threads.".format(threading.active_count()))
+	print("")
+	DM.SetOutputTo(0)
+
 	if __file__ != "":
 		base_path = str(os.path.dirname(os.path.dirname(__file__)))
 		
@@ -143,7 +152,6 @@ try:
 
 		# redirect all print() calls to the debug window
 		DM.SetOutputTo(2)
-		DM.ExecuteScriptString("ClearDebug();")
 		title = "{} runtime debug output".format(pylo.config.PROGRAM_NAME)
 		print(title)
 		print("*" * len(title))
@@ -153,6 +161,8 @@ try:
 		# set everything back to the results window
 
 		print("Stopping.")
+		print("")
+		print("Ending with {} active threads.".format(threading.active_count()))
 		DM.SetOutputTo(0)
 
 		print("Stopping.")
