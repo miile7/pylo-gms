@@ -108,6 +108,10 @@ try:
 	pylo.logginglib.log_debug(logger, "Imported 'pylo' in 'start.py', created logger")
 
 	try:
+		# change max thread count, there is a 'main' thread and a 'Dummy-1'
+		# thread in GMS
+		pylo.config.MAX_END_THREAD_COUNT = 2
+
 		# starting from here the logger is present so errors are logged
 		title = "Starting {}".format(pylo.config.PROGRAM_NAME)
 		print(title)
@@ -167,6 +171,9 @@ try:
 
 		print("Stopping.")
 		print("Exiting.")
+
+		# force GMS to stop the python execution
+		exit()
 	except Exception as e:
 		if isinstance(e, pylo.StopProgram):
 			pylo.logginglib.log_debug(logger, "Stopping program", exc_info=e)
@@ -183,3 +190,6 @@ except Exception as e:
 		
 		import traceback
 		traceback.print_exc()
+
+# force GMS to stop the python execution
+exit()
