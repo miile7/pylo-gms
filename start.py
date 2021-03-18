@@ -88,6 +88,7 @@ try:
 	import os
 	import sys
 	import logging
+	import datetime
 	import threading
 
 	# show threads in debug output
@@ -147,6 +148,26 @@ try:
 		# create view and configuration, both using the DM environmnent
 		view = pylo.DMView()
 		configuration = pylo.DMConfiguration()
+
+		# overwrite the log path and measurement directory to the values from
+		# the "Save Numbered" settings
+		try:
+			save_dir = pylo.pylodmlib.get_savedir()
+			configuration.setValue("measurement", "save-directory", save_dir)
+
+			log_path = os.path.join(save_dir, "{:%Y-%m-%d_%H-%M-%S}.log".format(datetime.datetime.now()))
+			configuration.setValue("measurement", "log-save-path", log_path)
+		except RuntimeError:
+			pass
+		
+		try:
+			save_name = pylo.pylodmlib.get_savename()
+			save_format = pylo.pylodmlib.get_savetype()
+
+			configuration.setValue("measurement", "save-file-format", 
+								   "{}.{}".format(save_name, save_format))
+		except (RuntimeError, ValueError):
+			pass
 
 		# remove loading dialog, dialog deletes tag
 		DM.GetPersistentTagGroup().SetTagAsBoolean(close_tag_name, True)
