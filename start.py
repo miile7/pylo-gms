@@ -105,6 +105,7 @@ try:
 			sys.path.insert(0, base_path)
 
 	import pylo
+	# pylo.logginglib.update_handlers(pylo.logger)
 	logger = pylo.logginglib.get_logger("gms.start.py", create_msg=False)
 	pylo.logginglib.log_debug(logger, "Imported 'pylo' in 'start.py', created logger")
 
